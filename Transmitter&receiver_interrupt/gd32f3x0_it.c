@@ -151,14 +151,21 @@ void USART0_IRQHandler(void)
     if(RESET != usart_interrupt_flag_get(USART0, USART_INT_FLAG_RBNE)){
         /* receive data */
         recevie_data_temp = usart_data_receive(USART0);
-        if((recevie_data_temp == 'G') || (receiver_buffer[0]=='g'))
+        if(recevie_data_temp == 'G')  
 				{
 					 rxcount = 0;
 					 receiver_buffer[rxcount++]='G';
    				 recevie_done = false;
 					 recevie_start = true;
 				}
-				else if(recevie_start == true)
+				else if(recevie_data_temp=='g')
+				{
+					 rxcount = 0;
+					 receiver_buffer[rxcount++]='g';
+   				 recevie_done = false;
+					 recevie_start = true;	
+				}
+				 if(recevie_start == true)
 				{
            if(rxcount > 32)
 					 {
@@ -175,19 +182,8 @@ void USART0_IRQHandler(void)
 					    recevie_start = false;
 					 }
 				}
-//        if(rxcount == receivesize){
-//            usart_interrupt_disable(USART0, USART_INT_RBNE);
-//        }
-    }
 
-//    if(RESET != usart_interrupt_flag_get(USART0, USART_INT_FLAG_TBE)){
-//        /* transmit data */
-//        usart_data_transmit(USART0, transmitter_buffer[txcount++]);
-//        if(txcount == transfersize){
-//            usart_interrupt_disable(USART0, USART_INT_TBE);
-//        }
-//    }
 }
 
 
-
+}
