@@ -38,23 +38,29 @@ OF SUCH DAMAGE.
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include "stdlib.h"
 //#include "gd32f350r_eval.h"
 
 #define ARRAYNUM(arr_nanme)      (uint32_t)(sizeof(arr_nanme) / sizeof(*(arr_nanme)))
 #define TRANSMIT_SIZE   (ARRAYNUM(transmitter_buffer) - 1)
 
 uint8_t transmitter_buffer[] = "\n\rUSART interrupt test\n\r";
-
+volatile bool recevie_data = false;
 uint8_t transfersize = TRANSMIT_SIZE;
 uint8_t receivesize = 32;
 __IO uint8_t txcount = 0; 
 __IO uint16_t rxcount = 0; 
-extern uint32_t recevie_data;
+
 extern volatile bool recevie_done;
 extern uint8_t recevie_data_temp;
 void usart0_gpio_config(void);
 void usart0_config(void);
-
+void data_deal(void);
+//void set_pid(float p_value,float i_value,float d_value);
+void set_pid(void);
+//float p_value;
+//float i_value;
+//float d_value;
 extern char receiver_buffer[32];
 /*!
     \brief      main function
@@ -70,7 +76,7 @@ int main(void)
     /* initilize the com */
     usart0_gpio_config();
     usart0_config();
-    
+//    data_deal();
     /* enable USART TBE interrupt */  
     //usart_interrupt_enable(USART0, USART_INT_TBE);
     
@@ -89,45 +95,26 @@ int main(void)
 		
     while (1){
 			
-//			   if((receiver_buffer[0]='g')||(receiver_buffer[0]='G'))
-//				 {
-//					 for( rxcount=1;rxcount<32;rxcount++)
-//					{		
-//					  receiver_buffer[rxcount++] = recevie_data_temp;
-//						if(rxcount > 32)
-//					 {
-//						  memset(receiver_buffer, 0, 32);
-//              rxcount = 0;
-//						  //recevie_done=false;
-//					 }
-//					}
+
 					  if(recevie_done == true)
 						{
+						     set_pid();
  					       uint8_t len = strlen(receiver_buffer);
 			           printf("recevie_data %d:", rxcount);
 					       for(uint8_t i=0; i< len; i++)
 					       {
-							       printf("%c", receiver_buffer[i]);
-						    }
+							      printf("%c", receiver_buffer[i]);
+						     }
 						    printf("\r\n");
+								
 						    memset(receiver_buffer, 0, 32);
 					      recevie_done = false;
 						    rxcount = 0;
 					  }
+						//
 						//usart_interrupt_enable(USART0, USART_INT_RBNE);
 			 }
 		 }		
-					
-//				else{
-//					
-//				}
-//					 if((recevie_data_temp == '\r') || (recevie_data_temp == '\n') || (recevie_data_temp == '#'))
-//				{
-//				    receiver_buffer[rxcount++] = '\0';
-//				    recevie_done = true;
-//					  //usart_interrupt_disable(USART0, USART_INT_RBNE);
-//				}
-//				}
 
 
 /*!
@@ -136,6 +123,20 @@ int main(void)
     \param[out] none
     \retval     none
 */
+float data;
+//void data_deal(void)
+//{
+//	if(recevie_data == true)
+//	{
+//		data = 
+//		
+//		
+//	}
+//	
+//	
+//	
+//	
+//}
 void usart0_gpio_config(void)
 {
     /* enable COM GPIO clock */

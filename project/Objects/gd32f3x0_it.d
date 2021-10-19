@@ -31,3 +31,4 @@
 .\objects\gd32f3x0_it.o: ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_tsi.h
 .\objects\gd32f3x0_it.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\gd32f3x0_it.o: E:\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\gd32f3x0_it.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h

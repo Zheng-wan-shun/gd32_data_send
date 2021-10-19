@@ -38,6 +38,7 @@ OF SUCH DAMAGE.
 #include "gd32f3x0_it.h"
 #include <stdbool.h>
 #include <string.h>
+#include "stdlib.h"
 //#include "gd32f350r_eval.h"
 
 extern uint8_t transfersize;
@@ -45,6 +46,7 @@ extern uint8_t receivesize;
 extern __IO uint8_t txcount; 
 extern __IO uint16_t rxcount; 
 char receiver_buffer[32];
+char* str=receiver_buffer;
 
 extern uint8_t transmitter_buffer[];
 /*!
@@ -141,31 +143,25 @@ void PendSV_Handler(void)
     \param[out] none
     \retval     none
 */
-int32_t recevie_data;
+
+//int32_t recevie_data;
 volatile bool recevie_done = false;
 volatile bool recevie_start = true;
  uint8_t recevie_data_temp = 0xff;
 void USART0_IRQHandler(void)
 {
-	 
+
     if(RESET != usart_interrupt_flag_get(USART0, USART_INT_FLAG_RBNE)){
         /* receive data */
         recevie_data_temp = usart_data_receive(USART0);
-        if(recevie_data_temp == 'G')  
+        if((recevie_data_temp == 'G') || (recevie_data_temp=='g'))
 				{
 					 rxcount = 0;
-					 receiver_buffer[rxcount++]='G';
+					 receiver_buffer[0]='G';
    				 recevie_done = false;
 					 recevie_start = true;
 				}
-				else if(recevie_data_temp=='g')
-				{
-					 rxcount = 0;
-					 receiver_buffer[rxcount++]='g';
-   				 recevie_done = false;
-					 recevie_start = true;	
-				}
-				 if(recevie_start == true)
+			 if(recevie_start == true)
 				{
            if(rxcount > 32)
 					 {
@@ -175,7 +171,8 @@ void USART0_IRQHandler(void)
 					    recevie_start = false;
 					 }
 					 receiver_buffer[rxcount++] = recevie_data_temp;
-					 if((recevie_data_temp == '\n') || (receiver_buffer[0]=='\r'))
+					     
+					 if((recevie_data_temp == '\n') || (recevie_data_temp=='\r'))
 					 {
 						  receiver_buffer[rxcount++] == '\0';
    				    recevie_done = true;
@@ -185,5 +182,44 @@ void USART0_IRQHandler(void)
 
 }
 
-
 }
+
+//void send_command(gcode command)
+//{
+//	switch (command):
+//		case G0:
+//			thing1;
+//		break;
+//		case G1:
+//			thing2;
+//		break;
+//		case G2:
+//			thing3;
+//		break;
+//		case G3:
+//			thing4;
+//		break;
+//}
+float p_value;
+float i_value;
+float d_value;
+void set_pid(void)
+{
+if((receiver_buffer[1]=='p')||(receiver_buffer[1]=='P'))
+	           {
+		            p_value = atof(receiver_buffer+2);
+							 printf("p_value:%f\t\n",p_value);
+	           }
+	         else if((receiver_buffer[1]=='i')||(receiver_buffer[1]=='I'))
+	            {
+		            i_value = atof(receiver_buffer+2);
+								printf("i_value:%f\t\n",i_value);
+	            }
+	         else if((receiver_buffer[1]=='d')||(receiver_buffer[1]=='D'))
+	             {
+	             	d_value= atof(receiver_buffer+2);
+								 printf("d_value:%f\t\n",d_value);
+	             }
+
+
+						 }

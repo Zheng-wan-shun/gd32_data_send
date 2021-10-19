@@ -39,6 +39,29 @@ OF SUCH DAMAGE.
 
 #include "gd32f3x0.h"
 
+typedef enum
+{
+	G0 = 0,
+	G1 = 1,
+	G2 = 2,
+	G3 = 3,
+	G4 = 4,
+		
+}gcode;
+
+typedef struct
+{
+	float p_value;
+	float i_value;
+	float d_value;
+
+}pid_value;
+
+
+
+
+
+
 /* function declarations */
 /* NMI handle function */
 void NMI_Handler(void);
@@ -57,4 +80,7 @@ void DebugMon_Handler(void);
 /* PendSV handle function */
 void PendSV_Handler(void);
 
+void send_data(void);
+//void set_pid(float p_value,float i_value,float d_value);
+void set_pid(void);
 #endif /* GD32F3X0_IT_HS */
