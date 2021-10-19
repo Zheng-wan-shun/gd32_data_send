@@ -322,7 +322,7 @@ I (..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_usart.h)(0x
 I (..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_wwdgt.h)(0x616E46A1)
 I (..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_misc.h)(0x616E46A1)
 I (..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_tsi.h)(0x616E46A1)
-F (..\Transmitter&receiver_interrupt\gd32f3x0_it.c)(0x616E4731)(--c99 -c --cpu Cortex-M4 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\src -I ..\src\driver -I ..\GD32F3x0_library\CMSIS -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Source\ARM -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include -I ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include -I ..\src\communication -I ..\src\common-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0\Device\Include-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0-D__UVISION_VERSION="536" -DGD32F330-o .\objects\gd32f3x0_it.o --omf_browse .\objects\gd32f3x0_it.crf --depend .\objects\gd32f3x0_it.d)
+F (..\Transmitter&receiver_interrupt\gd32f3x0_it.c)(0x616E8C4B)(--c99 -c --cpu Cortex-M4 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\src -I ..\src\driver -I ..\GD32F3x0_library\CMSIS -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Source\ARM -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include -I ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include -I ..\src\communication -I ..\src\common-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0\Device\Include-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0-D__UVISION_VERSION="536" -DGD32F330-o .\objects\gd32f3x0_it.o --omf_browse .\objects\gd32f3x0_it.crf --depend .\objects\gd32f3x0_it.d)
 I (..\Transmitter&receiver_interrupt\gd32f3x0_it.h)(0x616E4731)
 I (..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include\gd32f3x0.h)(0x616E46A1)
 I (..\GD32F3x0_library\CMSIS\core_cm4.h)(0x616E46A1)
@@ -357,7 +357,7 @@ I (E:\keil5\ARM\ARMCC\include\string.h)(0x6025237E)
 I (E:\keil5\ARM\ARMCC\include\stdlib.h)(0x60252374)
 F (..\Transmitter&receiver_interrupt\gd32f3x0_it.h)(0x616E4731)()
 F (..\Transmitter&receiver_interrupt\gd32f3x0_libopt.h)(0x616E46A1)()
-F (..\Transmitter&receiver_interrupt\main.c)(0x616E4731)(--c99 -c --cpu Cortex-M4 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\src -I ..\src\driver -I ..\GD32F3x0_library\CMSIS -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Source\ARM -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include -I ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include -I ..\src\communication -I ..\src\common-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0\Device\Include-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0-D__UVISION_VERSION="536" -DGD32F330-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\Transmitter&receiver_interrupt\main.c)(0x616E8B83)(--c99 -c --cpu Cortex-M4 -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\src -I ..\src\driver -I ..\GD32F3x0_library\CMSIS -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Source\ARM -I ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include -I ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include -I ..\src\communication -I ..\src\common-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0\Device\Include-IE:\keil5\GigaDevice\GD32F3x0_DFP\2.0.0-D__UVISION_VERSION="536" -DGD32F330-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include\gd32f3x0.h)(0x616E46A1)
 I (..\GD32F3x0_library\CMSIS\core_cm4.h)(0x616E46A1)
 I (E:\keil5\ARM\ARMCC\include\stdint.h)(0x6025237E)

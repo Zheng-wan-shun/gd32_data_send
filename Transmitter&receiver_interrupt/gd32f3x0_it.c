@@ -205,21 +205,35 @@ float i_value;
 float d_value;
 void set_pid(void)
 {
-if((receiver_buffer[1]=='p')||(receiver_buffer[1]=='P'))
+	char * cmd;
+	char * tmp;
+	char * str;
+	char receiver_data[32];
+	memcpy(receiver_data, receiver_buffer, strlen(receiver_buffer));
+	str = strtok_r(receiver_data," ",&tmp);
+	while(str != NULL)
+	{
+		str = strtok_r(0," ",&tmp);
+if((str[0]=='p')||(str[0]=='P'))
 	           {
-		            p_value = atof(receiver_buffer+2);
+		            p_value = atof(str+1);
 							 printf("p_value:%f\t\n",p_value);
 	           }
-	         else if((receiver_buffer[1]=='i')||(receiver_buffer[1]=='I'))
+	         else if((str[0]=='i')||(str[0]=='I'))
 	            {
-		            i_value = atof(receiver_buffer+2);
+		            i_value = atof(str+1);
 								printf("i_value:%f\t\n",i_value);
 	            }
-	         else if((receiver_buffer[1]=='d')||(receiver_buffer[1]=='D'))
+	         else if((str[0]=='d')||(str[0]=='D'))
 	             {
-	             	d_value= atof(receiver_buffer+2);
+	             	d_value= atof(str+1);
 								 printf("d_value:%f\t\n",d_value);
 	             }
-
+	 
 
 						 }
+	
+					 }
+
+					 
+					 

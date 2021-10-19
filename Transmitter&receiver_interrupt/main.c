@@ -101,6 +101,7 @@ int main(void)
 						     set_pid();
  					       uint8_t len = strlen(receiver_buffer);
 			           printf("recevie_data %d:", rxcount);
+                 printf("len: %d\t\n", len);
 					       for(uint8_t i=0; i< len; i++)
 					       {
 							      printf("%c", receiver_buffer[i]);
