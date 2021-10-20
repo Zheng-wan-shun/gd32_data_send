@@ -28,7 +28,11 @@
 .\objects\main.o: ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_wwdgt.h
 .\objects\main.o: ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_misc.h
 .\objects\main.o: ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_tsi.h
-.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: ..\Transmitter&receiver_interrupt\send_command.h
 .\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\Transmitter&receiver_interrupt\drv_ring_buff.h
+.\objects\main.o: ..\Transmitter&receiver_interrupt\drv_receive_buff.h
+.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: ..\Transmitter&receiver_interrupt\drv_uart.h

@@ -32,3 +32,7 @@
 .\objects\gd32f3x0_it.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\gd32f3x0_it.o: E:\keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\gd32f3x0_it.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\gd32f3x0_it.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\gd32f3x0_it.o: ..\Transmitter&receiver_interrupt\send_command.h
+.\objects\gd32f3x0_it.o: ..\Transmitter&receiver_interrupt\drv_ring_buff.h
+.\objects\gd32f3x0_it.o: ..\Transmitter&receiver_interrupt\drv_receive_buff.h

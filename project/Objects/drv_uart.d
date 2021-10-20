@@ -1,4 +1,4 @@
-.\objects\drv_uart.o: ..\src\driver\drv_uart.c
+.\objects\drv_uart.o: ..\Transmitter&receiver_interrupt\drv_uart.c
 .\objects\drv_uart.o: ..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include\gd32f3x0.h
 .\objects\drv_uart.o: ..\GD32F3x0_library\CMSIS\core_cm4.h
 .\objects\drv_uart.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -30,9 +30,9 @@
 .\objects\drv_uart.o: ..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include\gd32f3x0_tsi.h
 .\objects\drv_uart.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\drv_uart.o: E:\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\drv_uart.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\drv_uart.o: ..\Transmitter&receiver_interrupt\drv_ring_buff.h
 .\objects\drv_uart.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\drv_uart.o: ..\src\communication\communication_link.h
+.\objects\drv_uart.o: ..\Transmitter&receiver_interrupt\send_command.h
+.\objects\drv_uart.o: ..\Transmitter&receiver_interrupt\drv_receive_buff.h
 .\objects\drv_uart.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\drv_uart.o: ..\src\driver\drv_ring_buf.h
-.\objects\drv_uart.o: ..\src\driver\drv_uart.h
+.\objects\drv_uart.o: ..\Transmitter&receiver_interrupt\drv_uart.h

@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\src;..\src\driver;..\GD32F3x0_library\CMSIS;..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Source\ARM;..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include;..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include;..\src\communication;..\src\common</IncludePath>
+              <IncludePath>..\src;..\src\driver;..\GD32F3x0_library\CMSIS;..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Source\ARM;..\GD32F3x0_library\CMSIS\GD\GD32F3x0\Include;..\GD32F3x0_library\GD32F3x0_standard_peripheral\Include;..\src\communication;..\src\common;..\Transmitter&amp;receiver_interrupt</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -472,6 +472,26 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Transmitter&amp;receiver_interrupt\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_ring_buff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Transmitter&amp;receiver_interrupt\drv_ring_buff.c</FilePath>
+            </File>
+            <File>
+              <FileName>send_command.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Transmitter&amp;receiver_interrupt\send_command.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_receive_buff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Transmitter&amp;receiver_interrupt\drv_receive_buff.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Transmitter&amp;receiver_interrupt\drv_uart.c</FilePath>
             </File>
           </Files>
         </Group>

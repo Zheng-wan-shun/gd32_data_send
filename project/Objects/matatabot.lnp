@@ -14,6 +14,10 @@
 ".\objects\gd32f3x0_adc.o"
 ".\objects\gd32f3x0_it.o"
 ".\objects\main.o"
+".\objects\drv_ring_buff.o"
+".\objects\send_command.o"
+".\objects\drv_receive_buff.o"
+".\objects\drv_uart.o"
 --library_type=microlib --strict --scatter ".\Objects\matatabot.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
