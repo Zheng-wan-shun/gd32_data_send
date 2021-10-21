@@ -10,12 +10,9 @@ extern uint8_t transfersize;
 extern uint8_t receivesize;
 extern __IO uint8_t txcount; 
 extern __IO uint16_t rxcount; 
-char receiver_buffer[32];
-char* str=receiver_buffer;
 
-float p_value;
-float i_value;
-float d_value;
+	char receiver_buffer[32];
+  char* str=receiver_buffer;
 
 volatile bool recevie_done = false;
 volatile bool recevie_start = true;
@@ -23,6 +20,7 @@ extern  uint8_t recevie_data_temp ;
  
 void receivebuff_data_receive(void)
 {
+
 	if((recevie_data_temp == 'G') || (recevie_data_temp=='g'))
 		{
 			 rxcount = 0;
@@ -56,6 +54,9 @@ void receivebuff_data_receive(void)
 void set_pid(void)
 {
 
+float p_value;
+float i_value;
+float d_value;
 	char * tmp;
 	char * str;
 	char receiver_data[32];

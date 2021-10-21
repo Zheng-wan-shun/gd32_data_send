@@ -44,40 +44,90 @@ OF SUCH DAMAGE.
 #include "stdlib.h"
 #include "drv_uart.h"
 #include "gd32f3x0_usart.h"
+#include "stdint.h"
 //#include "gd32f350r_eval.h"
 
-#define ARRAYNUM(arr_nanme)      (uint32_t)(sizeof(arr_nanme) / sizeof(*(arr_nanme)))
-#define TRANSMIT_SIZE   (ARRAYNUM(transmitter_buffer) - 1)
+
 
 void usart0_gpio_config(void);
 void usart0_config(void);
+
+
 uint8_t transmitter_buffer[] = "\n\rUSART interrupt test\n\r";
 volatile bool recevie_data = false;
-uint8_t transfersize = TRANSMIT_SIZE;
+
 uint8_t receivesize = 32;
 __IO uint8_t txcount = 0; 
 __IO uint16_t rxcount = 0; 
-
+ RING_BUF_DEF_STRUCT s_rx_ring_buf;
 extern volatile bool recevie_done;
 extern uint8_t recevie_data_temp;
-extern char receiver_buffer[32];
+//char receive_buffer[32];
 
+//static uint8_t s_link_tx_buf[128];
+static uint8_t s_link_rx_buf[128];
+
+static uint8_t buffer_count;
+static bool received_start;
+static bool received_done;
 int main(void)
 {
+	
+	static char receive_buffer[32];
+	 uint8_t temp_buffer[32];
    nvic_irq_enable(USART0_IRQn, 0, 0); 
    usart0_gpio_config();
    usart0_config();
    usart_interrupt_enable(USART0, USART_INT_RBNE);
-    
-
-		
-    while (1)
+   drv_ringbuf_init((RING_BUF_DEF_STRUCT*)&s_rx_ring_buf, s_link_rx_buf, 128);
+   while (1)
 	{
-			
-			
-		receive_done();
+		static uint8_t count;
+		count = drv_ringbuf_count((RING_BUF_DEF_STRUCT*)&s_rx_ring_buf);
+		if(count != 0)
+		{
+		  drv_ringbuf_read((RING_BUF_DEF_STRUCT*)&s_rx_ring_buf, 1, temp_buffer);	  
+			if((temp_buffer[0] == 'g') || (temp_buffer[0]=='G'))
+			{	
+			//	printf("received_start\r\n");
+				received_start = true;
+			}
+			if(	received_start)
+			{
+				 receive_buffer[buffer_count++] = temp_buffer[0];
+				   if(buffer_count>32)
+			    {
+             memset(receive_buffer, 0, 32);
+			       received_done = false;
+			       received_start = false;
+			       buffer_count = 0;
+			     }
+			    if((temp_buffer[0] == '\n') || (temp_buffer[0]=='\r'))
+		     {
+					    printf("received done\r\n");
+			        receive_buffer[buffer_count++] = '\0';
+				     	received_start = false;
+				      received_done = true;
+	        }
+			}			  
+		}
+	
+		if(received_done)
+		{
+			 if(strlen(receive_buffer) != 0)
+			 {
+         printf("str:%s\r\n", receive_buffer);
+			 }
+			   if(buffer_count > 0)
+				 {
+			       printf("buffer_count:%d\r\n", buffer_count);
+				 }                                               //定位错误的方法，用printf函数去一步一步定位
+				 memset(receive_buffer, 0, 32);
+				 received_done = false;
+				 received_start = false;
+				 buffer_count = 0;
+		}
 
-						
   }
 }		
 

@@ -9,6 +9,12 @@
 #include "drv_uart.h"
 uint8_t recevie_data_temp = 0xff;
 
+extern  RING_BUF_DEF_STRUCT s_tx_ring_buf;
+#define DATA_RX_BUFSIZE        256
+#define CANCEL_CMD_LEN         (5)
+static uint8_t s_link_rx_buf[DATA_RX_BUFSIZE];
+extern  RING_BUF_DEF_STRUCT s_rx_ring_buf;
+static uint8_t s_link_tx_buf[128];
 void usart0_gpio_config(void)
 {
     /* enable COM GPIO clock */
@@ -61,12 +67,12 @@ int fputc(int ch, FILE *f)
 void USART0_IRQHandler(void)
 {
 
-    if(RESET != usart_interrupt_flag_get(USART0, USART_INT_FLAG_RBNE)){
-        /* receive data */
-        recevie_data_temp = usart_data_receive(USART0);
-        receivebuff_data_receive();
-
-}
+    if(RESET != usart_interrupt_flag_get(USART0, USART_INT_FLAG_RBNE))
+			{
+          /* receive data */
+          recevie_data_temp = usart_data_receive(USART0);
+          drv_ringbuf_write((RING_BUF_DEF_STRUCT*)&s_rx_ring_buf, &recevie_data_temp, 1 );
+       }
 
 }
 

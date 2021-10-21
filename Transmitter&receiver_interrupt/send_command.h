@@ -7,8 +7,11 @@
 
 
 
-
-
+void ring_buff_init(void);
+void ring_buff_receive(void);
+void rinf_buff_transmit(uint8_t *str, uint8_t len);
+void ringbuff_data_receive(void);
+void set_data(void);
 
 
 
