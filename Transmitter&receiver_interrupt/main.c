@@ -70,11 +70,10 @@ static uint8_t s_link_rx_buf[128];
 static uint8_t buffer_count;
 static bool received_start;
 static bool received_done;
+char receive_buffer[32];
+uint8_t temp_buffer[32];
 int main(void)
 {
-	
-	static char receive_buffer[32];
-	 uint8_t temp_buffer[32];
    nvic_irq_enable(USART0_IRQn, 0, 0); 
    usart0_gpio_config();
    usart0_config();
@@ -104,7 +103,7 @@ int main(void)
 			     }
 			    if((temp_buffer[0] == '\n') || (temp_buffer[0]=='\r'))
 		     {
-					    printf("received done\r\n");
+//					    printf("received done\r\n");
 			        receive_buffer[buffer_count++] = '\0';
 				     	received_start = false;
 				      received_done = true;
@@ -114,14 +113,15 @@ int main(void)
 	
 		if(received_done)
 		{
+		   set_pid();
 			 if(strlen(receive_buffer) != 0)
 			 {
          printf("str:%s\r\n", receive_buffer);
 			 }
-			   if(buffer_count > 0)
-				 {
-			       printf("buffer_count:%d\r\n", buffer_count);
-				 }                                               //定位错误的方法，用printf函数去一步一步定位
+//			   if(buffer_count > 0)
+//				 {
+//			       printf("buffer_count:%d\r\n", buffer_count);
+//				 }                                               //定位错误的方法，用printf函数去一步一步定位
 				 memset(receive_buffer, 0, 32);
 				 received_done = false;
 				 received_start = false;

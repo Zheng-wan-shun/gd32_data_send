@@ -50,7 +50,7 @@ void receivebuff_data_receive(void)
 	
 	
 }
-
+extern char receive_buffer[32];
 void set_pid(void)
 {
 
@@ -60,7 +60,8 @@ float d_value;
 	char * tmp;
 	char * str;
 	char receiver_data[32];
-	memcpy(receiver_data, receiver_buffer, strlen(receiver_buffer));
+	//memcpy(receiver_data, receiver_buffer, strlen(receiver_buffer));
+	memcpy(receiver_data, receive_buffer, strlen(receive_buffer));
 	str = strtok_r(receiver_data," ",&tmp);
 	while(str != NULL)
 	{
