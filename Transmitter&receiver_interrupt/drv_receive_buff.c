@@ -6,10 +6,9 @@
 #include "gd32f3x0_usart.h"
 #include "drv_receive_buff.h"
 #include "stdbool.h"
-extern uint8_t transfersize;
-extern uint8_t receivesize;
-extern __IO uint8_t txcount; 
-extern __IO uint16_t rxcount; 
+
+__IO uint8_t txcount; 
+__IO uint16_t rxcount; 
 
 	char receiver_buffer[32];
   char* str=receiver_buffer;
@@ -18,7 +17,18 @@ volatile bool recevie_done = false;
 volatile bool recevie_start = true;
 extern  uint8_t recevie_data_temp ;
  
-void receivebuff_data_receive(void)
+ /*
+  使用receivebuff,现在drv_uart.c中的void USART0_IRQHandler(void)打开 	receivebuff_data_receive_start();
+	然后main函数里初始化 
+	 uart_init();
+
+	 while里面写	receivebuff_start();
+即可
+
+*/
+ 
+ 
+void receivebuff_data_receive_start(void)
 {
 
 	if((recevie_data_temp == 'G') || (recevie_data_temp=='g'))
@@ -51,7 +61,7 @@ void receivebuff_data_receive(void)
 	
 }
 extern char receive_buffer[32];
-void set_pid(void)
+void receivebuff_set_pid(void)
 {
 
 float p_value;
@@ -60,8 +70,8 @@ float d_value;
 	char * tmp;
 	char * str;
 	char receiver_data[32];
-	//memcpy(receiver_data, receiver_buffer, strlen(receiver_buffer));
-	memcpy(receiver_data, receive_buffer, strlen(receive_buffer));
+	memcpy(receiver_data, receiver_buffer, strlen(receiver_buffer));
+	//memcpy(receiver_data, receive_buffer, strlen(receive_buffer));
 	str = strtok_r(receiver_data," ",&tmp);
 	while(str != NULL)
 	{
@@ -90,7 +100,7 @@ void receive_done(void)
 	
 	 if(recevie_done == true)
 			{
-				  set_pid();
+				  receivebuff_set_pid();
  					uint8_t len = strlen(receiver_buffer);
 			    printf("recevie_data %d:", rxcount);
           printf("len: %d\t\n", len);
@@ -104,11 +114,11 @@ void receive_done(void)
 					recevie_done = false;
 					rxcount = 0;
 			}
-	
-	
-	
 }
-
+void receivebuff_start(void)
+{
+		receive_done();
+}
 
 
 

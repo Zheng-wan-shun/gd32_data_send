@@ -7,9 +7,10 @@
 
 
 
-void receivebuff_data_receive(void);
-void set_pid(void);
+void receivebuff_data_receive_start(void);
+void receivebuff_set_pid(void);
 void receive_done(void);
+void receivebuff_start(void);
 
 
 

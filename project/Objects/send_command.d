@@ -33,3 +33,6 @@
 .\objects\send_command.o: ..\Transmitter&receiver_interrupt\drv_ring_buff.h
 .\objects\send_command.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\send_command.o: ..\Transmitter&receiver_interrupt\send_command.h
+.\objects\send_command.o: ..\Transmitter&receiver_interrupt\drv_uart.h
+.\objects\send_command.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\send_command.o: ..\Transmitter&receiver_interrupt\drv_receive_buff.h

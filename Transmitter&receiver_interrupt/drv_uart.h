@@ -5,7 +5,7 @@
 #include "stdint.h"
 #include "stdio.h"
 
-
+void drv_uart_init(void);
 void usart0_gpio_config(void);
 void usart0_config(void);
 
